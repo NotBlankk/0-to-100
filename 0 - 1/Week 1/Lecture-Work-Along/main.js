@@ -47,8 +47,62 @@
 //   arr2.push(arr1[i]);
 // }
 // console.log(arr2);
-let sum = 0;
-for (let i = 0; i < 100000000000; i++) {
-  sum = sum + 1;
+// let sum = 0;
+// for (let i = 0; i < 100000000000; i++) {
+//   sum = sum + 1;
+// }
+// console.log(sum);
+
+// function reverseEachElement(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     console.log(String(array[i]).split("").reverse());
+//     array[i] = String(array[i]).split("").reverse().join("");
+//   }
+//   return array;
+// }
+
+// const array = [123, "world"];
+// const reversedArray = reverseEachElement(array);
+
+// console.log(reversedArray);
+
+function isAnagram(str1, str2) {
+  // let lol1 = str1.split("");
+  // // console.log(lol1);
+  // let arr1 = [];
+  // for (let i = 0; i < lol1.length; i++) {
+  //   arr1[lol1[i] - "a"]++;
+  // }
+  // console.log(arr1);
+
+  // let lol2 = str2.split("");
+  // // console.log(lol2);
+  // let arr2 = [];
+  // for (let i = 0; i < lol2.length; i++) {
+  //   arr2[lol2[i] - "a"]++;
+  //   console.log(lol2[i] - "a");
+  // }
+  // console.log(arr2);
+  let l1 = str1.length;
+  let l2 = str2.length;
+  if (l1 != l2) {
+    return false;
+  }
+
+  str1 = str1.split(" ").join("");
+  str1 = str1.toLowerCase();
+  str1 = str1.split("").sort();
+
+  str2 = str2.split(" ").join("");
+  str2 = str2.toLowerCase();
+  str2 = str2.split("").sort();
+
+  for (let i = 0; i < l1; i++) {
+    if (str1[i] != str2[i]) {
+      return false;
+    }
+  }
+  return true;
 }
-console.log(sum);
+let ans = isAnagram("Debit Card", "Bad Credit");
+console.log(ans);
