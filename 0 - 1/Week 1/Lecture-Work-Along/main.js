@@ -66,43 +66,77 @@
 
 // console.log(reversedArray);
 
-function isAnagram(str1, str2) {
-  // let lol1 = str1.split("");
-  // // console.log(lol1);
-  // let arr1 = [];
-  // for (let i = 0; i < lol1.length; i++) {
-  //   arr1[lol1[i] - "a"]++;
-  // }
-  // console.log(arr1);
+// function isAnagram(str1, str2) {
+// let lol1 = str1.split("");
+// // console.log(lol1);
+// let arr1 = [];
+// for (let i = 0; i < lol1.length; i++) {
+//   arr1[lol1[i] - "a"]++;
+// }
+// console.log(arr1);
 
-  // let lol2 = str2.split("");
-  // // console.log(lol2);
-  // let arr2 = [];
-  // for (let i = 0; i < lol2.length; i++) {
-  //   arr2[lol2[i] - "a"]++;
-  //   console.log(lol2[i] - "a");
-  // }
-  // console.log(arr2);
-  let l1 = str1.length;
-  let l2 = str2.length;
-  if (l1 != l2) {
-    return false;
+// let lol2 = str2.split("");
+// // console.log(lol2);
+// let arr2 = [];
+// for (let i = 0; i < lol2.length; i++) {
+//   arr2[lol2[i] - "a"]++;
+//   console.log(lol2[i] - "a");
+// }
+//   // console.log(arr2);
+//   let l1 = str1.length;
+//   let l2 = str2.length;
+//   if (l1 != l2) {
+//     return false;
+//   }
+
+//   str1 = str1.split(" ").join("");
+//   str1 = str1.toLowerCase();
+//   str1 = str1.split("").sort();
+
+//   str2 = str2.split(" ").join("");
+//   str2 = str2.toLowerCase();
+//   str2 = str2.split("").sort();
+
+//   for (let i = 0; i < l1; i++) {
+//     if (str1[i] != str2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// let ans = isAnagram("Debit Card", "Bad Credit");
+// console.log(ans);
+// function findLargestElement(numbers) {
+//   let ans = numbers[0];
+//   for (let i = 0; i < numbers.length; i++) {
+//     ans = Math.max(ans, numbers[i]);
+//     // console.log(ans);
+//   }
+//   return ans;
+// }
+// let numbers = [3, 7, 2, 9, 1];
+// findLargestElement(numbers);
+
+function isPalindrome(str) {
+  if (str.length == 0) {
+    return true;
   }
+  str = str.replaceAll("?", "");
+  str = str.replaceAll("!", "");
+  str = str.replaceAll(",", "");
+  str = str.replaceAll(".", "");
+  str = str.toLowerCase();
+  str = str.split(" ").join("");
+  // console.log(str);
+  let str2;
+  str2 = str.split("").reverse().join("");
+  // console.log(str2);
 
-  str1 = str1.split(" ").join("");
-  str1 = str1.toLowerCase();
-  str1 = str1.split("").sort();
-
-  str2 = str2.split(" ").join("");
-  str2 = str2.toLowerCase();
-  str2 = str2.split("").sort();
-
-  for (let i = 0; i < l1; i++) {
-    if (str1[i] != str2[i]) {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] != str2[i]) {
       return false;
     }
   }
   return true;
 }
-let ans = isAnagram("Debit Card", "Bad Credit");
-console.log(ans);
+console.log(isPalindrome("Mr? Owl ate my metal worm?"));
