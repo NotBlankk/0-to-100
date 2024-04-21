@@ -39,11 +39,82 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+
+app.use(bodyParser.json());
+
+let counter = 0;
+let totodo = [
+  {
+    ID: ++counter,
+    Title: "1",
+    Disc: "This is a test",
+    Completed: true,
+  },
+  {
+    ID: ++counter,
+    Title: "2",
+    Disc: "This is a test",
+    Completed: true,
+  },
+];
+//!---------------
+app.get("/todos", function (req, res) {
+  //   console.log(totodo);
+  res.json({
+    totodo,
+  });
+});
+//!---------------
+app.get("/todos/:id", function (req, res) {
+  //   console.log(totodo);
+  let ans = totodo[req.params.id - 1];
+  res.json({
+    ans,
+  });
+});
+//!---------------
+app.post("/todos/", function (req, res) {
+  const tit = req.body.title;
+  const des = req.body.des;
+  totodo.push({
+    ID: ++counter,
+    Title: tit,
+    Desc: des,
+  });
+  res.json({
+    msg: "Done!",
+  });
+});
+//!---------------
+app.put("/todos/:id", function (req, res) {
+  const tit = req.body.title;
+  const des = req.body.des;
+  totodo[req.params.id] = {
+    ID: ++counter,
+    Title: tit,
+    Desc: des,
+  };
+  res.json({
+    msg: "Updated",
+  });
+});
+//!---------------
+app.delete("/todos/:id", function (req, res) {
+  let newList = [];
+  let lol = req.params.id;
+  for (let i = 0; i < totodo.length; i++) {
+    if (totodo[i].ID != req.params.id) {
+      newList.push(totodo[i]);
+    }
+  }
+  totodo = newList;
+  res.json({
+    lol,
+  });
+});
+
+module.exports = app;
