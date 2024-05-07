@@ -56,7 +56,7 @@ let totodo = [
   },
   {
     ID: ++counter,
-    Title: "2",
+    Title: "Second",
     Disc: "This is a test",
     Completed: true,
   },
